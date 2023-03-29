@@ -5,6 +5,16 @@ let movieData;
 //svg element selector
 let canvas = d3.select('#canvas');
 
+let drawTreeMap =()=> {
+    let hierarchy = d3.hierarchy(movieData, (node) => {
+        return node['children']
+    }).sum((node) => {
+        return node['va;ie']
+    }).sort((node1, node2) => {
+        return node2['value'] - node1['value']
+    })
+}
+
 //fetching data with d3.json method
 d3.json(movieDataUrl).then(
     (data, error) => {
