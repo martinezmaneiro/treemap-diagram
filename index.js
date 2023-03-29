@@ -4,6 +4,8 @@ let movieData;
 
 //svg element selector
 let canvas = d3.select('#canvas');
+//tooltip selector
+let tooltip = d3.select('#tooltip');
 
 //creates a treemap once we have defined the data
 let drawTreeMap =()=> {
@@ -64,7 +66,16 @@ let drawTreeMap =()=> {
                 return movie['x1'] - movie['x0']})
             .attr('height', (movie) => {
                 return movie['y1'] - movie['y0']
-            });
+            })
+            //mouseover event listener to turn on tooltip display
+            .on('mouseover', (movie) => {
+                tooltip.transition()
+                        .style('visibility', 'visible');
+                let movieData = movie['data'];
+                tooltip.text(
+                    movieData['name'] + ' : $' + movieData['value']
+                );
+            })
 
     //adding movie names to each block
     block.append('text')
