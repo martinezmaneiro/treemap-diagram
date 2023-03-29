@@ -46,9 +46,15 @@ let drawTreeMap =()=> {
                     return 'lightgreen'
                 }else if(category === 'Biography'){
                     return 'ligthblue'
-                }
-            });
-};
+                }})
+            //added name, category and value
+            .attr('data-name', (movie) => {
+                return movie['data']['name']})
+            .attr('data-category', (movie) => {
+                return movie ['data']['category']})
+            attr('data-value', (movie) => {
+                return movie['data']['value']});
+    };
 
 //fetching data with d3.json method
 d3.json(movieDataUrl).then(
