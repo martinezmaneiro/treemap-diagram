@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    background-color: whitesmoke;
+}
+
+#canvas {
+    min-width: 1000px;
+    max-width: 600px;
+}
