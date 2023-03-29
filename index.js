@@ -22,14 +22,33 @@ let drawTreeMap =()=> {
                             .size([1000, 600]);
     createTreeMap(hierarchy);
     let movieTiles = hierarchy.leaves();
-
+    //adding the tiles
     let block = canvas.selectAll('g')
                         .data(movieTiles)
                         .enter()
                         .append('g');
     block.append('rect')
-            .attr('class', 'tile');
-}
+            .attr('class', 'tile')
+            //fill colors depending on movie category
+            .attr('fill', (movie) => {
+                let category = movie['data']['category']
+                if(category === 'Action'){
+                    return 'crimson'
+                }else if(category === 'Drama'){
+                    return 'pink'
+                }else if(category === 'Adventure'){
+                    return 'purple'
+                }else if(category === 'Family'){
+                    return 'yellow'
+                }else if(category === 'Animation'){
+                    return 'khaki'
+                }else if(category === 'Comedy'){
+                    return 'lightgreen'
+                }else if(category === 'Biography'){
+                    return 'ligthblue'
+                }
+            });
+};
 
 //fetching data with d3.json method
 d3.json(movieDataUrl).then(
