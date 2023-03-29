@@ -75,12 +75,15 @@ let drawTreeMap =()=> {
                 tooltip.text(
                     movieData['name'] + ' : $' + movieData['value']
                 );
+                /*adding data-value property which matches data-value
+                active area*/
+                tooltip.attr('data-value', movieData['value']);
             })
             //mouseout event listener to turn off (hidden) tooltip's display
             .on('mouseout', (movie) => {
                 tooltip.transition()
-                        .style('visibility', 'hidden')
-            })
+                        .style('visibility', 'hidden');
+            });
     //adding movie names to each block
     block.append('text')
             .text((movie) => {
