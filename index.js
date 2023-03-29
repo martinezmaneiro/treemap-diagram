@@ -5,3 +5,14 @@ let movieData;
 //svg element selector
 let canvas = d3.select('#canvas');
 
+//fetching data with d3.json method
+d3.json(movieDataUrl).then(
+    (data, error) => {
+        if(error){
+            console.log(error);
+        } else {
+            movieData = data
+            console.log(movieData);
+        };
+    }
+);
