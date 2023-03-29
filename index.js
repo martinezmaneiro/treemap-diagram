@@ -63,7 +63,7 @@ d3.json(movieDataUrl).then(
             console.log(error);
         } else {
             movieData = data
-            console.log(movieData);
+            drawTreeMap();
         };
     }
 );
