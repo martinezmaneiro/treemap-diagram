@@ -40,11 +40,11 @@ let drawTreeMap =()=> {
             .attr('fill', (movie) => {
                 let category = movie['data']['category'];
                 if(category === 'Action'){
-                    return 'crimson';
+                    return '#F8927C';
                 }else if(category === 'Drama'){
                     return 'pink';
                 }else if(category === 'Adventure'){
-                    return 'purple';
+                    return '#F47CF8';
                 }else if(category === 'Family'){
                     return 'yellow';
                 }else if(category === 'Animation'){
