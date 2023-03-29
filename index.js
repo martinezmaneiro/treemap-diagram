@@ -67,7 +67,7 @@ let drawTreeMap =()=> {
             .attr('height', (movie) => {
                 return movie['y1'] - movie['y0']
             })
-            //mouseover event listener to turn on tooltip display
+            //mouseover event listener to turn on tooltip's display
             .on('mouseover', (movie) => {
                 tooltip.transition()
                         .style('visibility', 'visible');
@@ -76,7 +76,11 @@ let drawTreeMap =()=> {
                     movieData['name'] + ' : $' + movieData['value']
                 );
             })
-
+            //mouseout event listener to turn off (hidden) tooltip's display
+            .on('mouseout', (movie) => {
+                tooltip.transition()
+                        .style('visibility', 'hidden')
+            })
     //adding movie names to each block
     block.append('text')
             .text((movie) => {
