@@ -12,7 +12,7 @@ let drawTreeMap =()=> {
     let hierarchy = d3.hierarchy(movieData, (node) => {
         return node['children']
     }).sum((node) => {
-        return node['va;ie']
+        return node['value']
     }).sort((node1, node2) => {
         return node2['value'] - node1['value']
     });
@@ -27,15 +27,9 @@ let drawTreeMap =()=> {
                         .data(movieTiles)
                         .enter()
                         .append('g')
-                        //setting coordinates and dimensions
+                        //setting coordinates
                         .attr('transform', (movie) => {
-                            return 'translate (' + movie['x0'] + ', ' + movie['y0'] +')'
-                        })
-                        .attr('width', (movie) => {
-                            return movie['x1'] - movie['x0']
-                        })
-                        .attr('height', (movie) => {
-                            return movie['y1'] - movie['y0']
+                            return 'translate(' + movie['x0'] + ', ' + movie['y0'] + ')'
                         });
 
     block.append('rect')
@@ -56,15 +50,22 @@ let drawTreeMap =()=> {
                 }else if(category === 'Comedy'){
                     return 'lightgreen';
                 }else if(category === 'Biography'){
-                    return 'ligthblue';
+                    return 'lightblue';
                 }})
             //added name, category and value
             .attr('data-name', (movie) => {
                 return movie['data']['name']})
             .attr('data-category', (movie) => {
                 return movie ['data']['category']})
-            attr('data-value', (movie) => {
-                return movie['data']['value']});
+            .attr('data-value', (movie) => {
+                return movie['data']['value']})
+            //setting dimensions
+            .attr('width', (movie) => {
+                return movie['x1'] - movie['x0']})
+            .attr('height', (movie) => {
+                return movie['y1'] - movie['y0']
+            });
+
     //adding movie names to each block
     block.append('text')
             .text((movie) => {
