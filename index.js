@@ -42,21 +42,21 @@ let drawTreeMap =()=> {
             .attr('class', 'tile')
             //fill colors depending on movie category
             .attr('fill', (movie) => {
-                let category = movie['data']['category']
+                let category = movie['data']['category'];
                 if(category === 'Action'){
-                    return 'crimson'
+                    return 'crimson';
                 }else if(category === 'Drama'){
-                    return 'pink'
+                    return 'pink';
                 }else if(category === 'Adventure'){
-                    return 'purple'
+                    return 'purple';
                 }else if(category === 'Family'){
-                    return 'yellow'
+                    return 'yellow';
                 }else if(category === 'Animation'){
-                    return 'khaki'
+                    return 'khaki';
                 }else if(category === 'Comedy'){
-                    return 'lightgreen'
+                    return 'lightgreen';
                 }else if(category === 'Biography'){
-                    return 'ligthblue'
+                    return 'ligthblue';
                 }})
             //added name, category and value
             .attr('data-name', (movie) => {
@@ -65,6 +65,13 @@ let drawTreeMap =()=> {
                 return movie ['data']['category']})
             attr('data-value', (movie) => {
                 return movie['data']['value']});
+    //adding movie names to each block
+    block.append('text')
+            .text((movie) => {
+                return movie['data']['name'];
+            })
+            .attr('x', 5)
+            .attr('y', 30);
     };
 
 //fetching data with d3.json method
@@ -73,7 +80,7 @@ d3.json(movieDataUrl).then(
         if(error){
             console.log(error);
         } else {
-            movieData = data
+            movieData = data;
             drawTreeMap();
         };
     }
