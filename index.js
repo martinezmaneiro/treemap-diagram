@@ -26,7 +26,18 @@ let drawTreeMap =()=> {
     let block = canvas.selectAll('g')
                         .data(movieTiles)
                         .enter()
-                        .append('g');
+                        .append('g')
+                        //setting coordinates and dimensions
+                        .attr('transform', (movie) => {
+                            return 'translate (' + movie['x0'] + ', ' + movie['y0'] +')'
+                        })
+                        .attr('width', (movie) => {
+                            return movie['x1'] - movie['x0']
+                        })
+                        .attr('height', (movie) => {
+                            return movie['y1'] - movie['y0']
+                        });
+
     block.append('rect')
             .attr('class', 'tile')
             //fill colors depending on movie category
